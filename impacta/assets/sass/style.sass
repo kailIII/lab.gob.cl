@@ -1,0 +1,702 @@
+// the shape of things to come
+
+@import "compass/reset"
+@import "compass/css3"
+
+// --------------------------------------------------------------------------
+// Mixins
+// --------------------------------------------------------------------------
+
+=hide-text
+  display : inline-block
+  overflow : hidden
+  text-indent : -1000em
+
+
+// ----------------------------------------------------------------------------
+// Fonts
+// ----------------------------------------------------------------------------
+
+@font-face
+  font-family: 'blender_heavy'
+  src: font-url('BlenderPro-Heavy.eot')
+  src: font-url('BlenderPro-Heavy.eot?#iefix') format('embedded-opentype'), font-url('BlenderPro-Heavy.woff') format('woff'), font-url('BlenderPro-Heavy.ttf') format('truetype'), font-url('BlenderPro-Heavy.svg#BlenderPro-Heavy') format('svg')
+  font-weight: thin
+  font-style: normal
+
+@font-face
+  font-family: 'circular_regular'
+  src: font-url('CircularStd-Book.eot')
+  src: font-url('CircularStd-Book.eot?#iefix') format('embedded-opentype'), font-url('CircularStd-Book.woff') format('woff'), font-url('CircularStd-Book.ttf') format('truetype'), font-url('CircularStd-Book.svg#CircularStd-Book') format('svg')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'circular_black'
+  src: font-url('CircularStd-Black.eot')
+  src: font-url('CircularStd-Black.eot?#iefix') format('embedded-opentype'), font-url('CircularStd-Black.woff') format('woff'), font-url('CircularStd-Black.ttf' ) format('truetype'), font-url('CircularStd-Black.svg#CircularStd-Black') format('svg')
+  font-weight: bold
+  font-style: normal
+
+=blender_heavy
+  font-family: 'blender_heavy', helvetica, sans-serif
+=circular_black
+  font-family: 'circular_black', helvetica, sans-serif
+=circular_regular
+  font-family: 'circular_regular', helvetica, sans-serif
+
+
+// ----------------------------------------------------------------------------
+// Basic classes
+// ----------------------------------------------------------------------------
+
+body
+  font-family : Helvetica, Arial, sans-serif
+  font-size : 76%
+  text-rendering : optimizelegibility
+  -webkit-font-smoothing : antialiased
+  font-smoothing : antialiased
+iframe
+  border : none
+a img
+  display : block
+
+// ----------------------------------------------------------------------------
+// Colours and Buttons
+// ----------------------------------------------------------------------------
+
+$pink: #ff7bac
+$cyan: #3fa9f5
+$orange: #ff7a08
+$green: #40d078
+$red: #ea4545
+$yellow: #ffc626
+$purple: #a500ff
+$fucsia : #e72b8e
+
+
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+body
+  background: #f5f5f5
+
+
+// ----------------------------------------------------------------------------
+// Structure
+// ----------------------------------------------------------------------------
+
+$max-width: 1024px
+
+=reset
+  @include box-sizing(border-box)
+  margin: 0
+  padding: 0
+  border: 0
+
+.hide
+  display : none
+  visibility: none
+
+=vertical-align
+  position: absolute
+  top: 50%
+  @include transform( translateY(-50%) )
+
+=ratio
+  position: relative
+  width: 100%
+  display: block
+  &.fourByThree
+    padding-bottom: 75%
+  &.sixteenByNine
+    padding-bottom: 56.25%
+  iframe
+    +reset
+    display: block
+    width: 100%!important
+    height: 100%!important
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
+
+p,h1,h2,h3,h4,h5,big,blockquote,.title,strong,em
+  +reset
+
+// ----------------------------------------------------------------------------
+// Design Patterns
+// ----------------------------------------------------------------------------
+
+=position-reset
+  top: auto
+  left: auto
+  right: auto
+  bottom: auto
+  position: relative
+  width: 100%
+  float: left
+
+=logo
+  a
+    +hide-text
+    width: 185px
+    height: 43px
+    background: image-url('logo_impacta.png') center center no-repeat
+    background-size: 100%
+
+=logo_lab
+  a
+    +hide-text
+    width: 93px
+    height: 31px
+    background: image-url('logo_lab.png') center center no-repeat
+    background-size: 100%
+
+=logo_gob
+  a
+    +hide-text
+    width: 128px
+    height: 18px
+    background: image-url('gob_oficial.png') center center no-repeat
+    background-size: 100%
+
+$menu_width: 300px
+$menu_width_small: 250px
+
+header
+  @include box-sizing(border-box)
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  width: $menu_width
+  text-align: center
+  background: white
+  z-index: 30
+  @media only screen and (max-width : 1200px)
+    width: $menu_width_small
+  @media only screen and (max-width : 800px)
+    width: 100%
+    right: 0
+    bottom: auto
+    height: 90px
+
+=spacing_regular
+  position: absolute
+  left: 10%
+  right: 10%
+  @media only screen and (max-width : 1024px)
+    left: 5%
+    right: 5%
+
+
+// ----------------------------------------------------------------------------
+// Header
+// ----------------------------------------------------------------------------
+
+header
+  &:after
+    content: ''
+    position: absolute
+    top: 90px
+    left: 48%
+    background: image-url('menu_header.png') center bottom no-repeat
+    width: 10px
+    height: 50px
+    @media only screen and (min-width : 1320px)
+      height: 120px
+    @media only screen and (max-width : 800px)
+      display: none
+  &:before
+    content: ''
+    position: absolute
+    bottom: 90px
+    left: 48%
+    background: image-url('menu_bottom.png') center top no-repeat
+    width: 10px
+    height: 50px
+    @media only screen and (min-width : 1320px)
+      height: 120px
+    @media only screen and (max-width : 800px)
+      display: none
+  .language
+    position: absolute
+    top: 5px
+    left: 5px
+  h1
+    +logo
+    position: absolute
+    top: 30px
+    left: 0
+    right: 0
+  h3
+    +logo_lab
+    position: absolute
+    bottom: 40px
+    left: 0
+    right: 0
+    @media only screen and (max-width : 800px)
+      display: none
+  h4
+    +logo_gob
+    position: absolute
+    bottom: 10px
+    left: 0
+    right: 0
+    @media only screen and (max-width : 800px)
+      display: none
+  ul
+    +vertical-align
+    width: 100%
+    text-align: left
+    @media only screen and (max-width : 800px)
+      display: none
+    li
+      @include box-sizing(border-box)
+      display: block
+      margin: auto 50px
+      a
+        display: block
+        padding: 10px 0
+        color: black
+        font-size: 1.4em
+        line-height: 1.4em
+        +circular_regular
+        @media only screen and (max-width : 1024px)
+          padding: 3px 0
+        &.slide-01
+          color: $pink
+        &.slide-02
+          color: $cyan
+        &.slide-03
+          color: $orange
+        &.slide-04
+          color: $green
+        &.slide-05
+          color: black
+        &.slide-06
+          color: $red
+        &.slide-07
+          color: $yellow
+        &.slide-08
+          color: $purple
+        &.slide-08
+          color: $fucsia
+      &:nth-of-type(3)
+        margin-bottom: 30px
+
+.social
+  position: fixed
+  bottom: 0
+  right: 10px
+  z-index: 100
+  li
+    display: inline-block
+    margin: 10px
+    &:nth-of-type(1)
+      -webkit-transform: translateY(-1px)
+      transform: translateY(-1px)
+  @media only screen and (max-width : 800px)
+    display: none
+
+.note
+  position: fixed
+  top: 20px
+  left: $menu_width + 20px
+  z-index: 100
+  background: #fbe95f
+  padding: 15px
+  font-size: 1.4em
+  +circular_regular
+  -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2)
+  box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2)
+  -webkit-border-radius: 3px
+  border-radius: 3px
+  text-align: center
+  @media only screen and (max-width : 1024px)
+    left: $menu_width_small + 20px
+  @media only screen and (max-width : 800px)
+    bottom: 10px
+    left: 10px
+    right: 10px
+    top: auto
+    padding: 10px
+    font-size: 1.2em
+  a
+    color: black
+    &.big
+      display: block
+      +circular_black
+      font-size: 1.4em
+      margin-bottom: 10px
+      @media only screen and (max-width : 800px)
+        margin: 0 0 5px 0
+        font-size: 1em
+
+=black_title
+  position: absolute
+  right: 10%
+  top: 50px
+  +blender_heavy
+  display: block
+  font-size: 4em
+  text-align: right
+  @media only screen and (max-width : 800px)
+    +position-reset
+    width: 100%
+    text-align: center
+  span
+    display: block
+
+// ----------------------------------------------------------------------------
+// Header
+// ----------------------------------------------------------------------------
+
+section
+  @include box-sizing(border-box)
+  position: fixed
+  top: 0
+  left: 0
+  right: $menu_width
+  bottom: 0
+  z-index: 0
+  -webkit-transition: -webkit-transform 0.5s ease
+  transition: transform 0.5s ease
+  @media only screen and (max-width : 1200px)
+    right: $menu_width_small
+  @media only screen and (max-width : 800px)
+    position: relative
+    display: block
+    float: left
+    width: 100%
+    min-height: 400px
+    padding: 20px
+    background-image: none !important
+  &.open
+    z-index: 20
+    -webkit-transform: translateX($menu_width)
+    transform: translateX($menu_width)
+    @media only screen and (max-width : 1200px)
+      -webkit-transform: translateX($menu_width_small)
+      transform: translateX($menu_width_small)
+    @media only screen and (max-width : 800px)
+      -webkit-transform: translateX(0)
+      transform: translateX(0)
+  div
+    @include box-sizing(border-box)
+  ul
+    +circular_regular
+  p
+    +circular_regular
+    display: block
+    font-size: 1.4em
+    line-height: 1.2em
+    @media only screen and (min-width : 1320px)
+      font-size: 2em
+    @media only screen and (max-width : 1024px)
+      font-size: 1.3em
+  &#slide-00
+    background: url(../../content/00.jpg) center center no-repeat white
+    background-size: cover
+    @media only screen and (max-width : 800px)
+      background-image: url(../../content/00.jpg)!important
+  &#slide-01
+    background-color: $pink
+    .text
+      position: absolute
+      top: 30%
+      +spacing_regular
+      @media only screen and (max-width : 800px)
+        +vertical-align
+      h3
+        +circular_black
+        display: block
+        margin-bottom: 30px
+        font-size: 3em
+        line-height: 1.2em
+        @media only screen and (max-width : 800px)
+          font-size: 2em
+      h2
+        +blender_heavy
+        display: block
+        font-size: 6em
+        color: white
+        @media only screen and (max-width : 1024px)
+          font-size: 5em
+        @media only screen and (max-width : 800px)
+          font-size: 3em
+      @media only screen and (min-width : 1320px)
+        +vertical-align
+  &#slide-02
+    background: $cyan
+    &:after
+      content: ''
+      position: absolute
+      top: 60px
+      left: -10px
+      background: url(../../content/02_c.png) left center no-repeat
+      width: 400px
+      height: 15px
+      @media only screen and (max-width : 800px)
+        display: none
+    &:before
+      content: ''
+      position: absolute
+      bottom: 0
+      right: 60px
+      background: url(../../content/02_d.png) center bottom no-repeat
+      width: 15px
+      height: 400px
+      @media only screen and (max-width : 800px)
+        display: none
+    h3
+      +black_title
+    .text
+      position: absolute
+      top: 150px
+      +spacing_regular
+      @media only screen and (max-width : 800px)
+        +position-reset
+        width: 100%
+      blockquote
+        +circular_black
+        display: block
+        margin-bottom: 60px
+        font-size: 2.5em
+        line-height: 1.2em
+        color: white
+        @media only screen and (min-width : 1320px)
+          font-size: 3em
+        @media only screen and (max-width : 1024px)
+          font-size: 2em
+        @media only screen and (max-width : 800px)
+          margin-top: 30px
+          margin-bottom: 30px
+      p
+        margin-bottom: 30px
+      .desc
+        @include box-sizing(border-box)
+        width: 95%
+        display: block
+        background: url(../../content/02.png) left top no-repeat
+        padding-left: 100px
+        @media only screen and (max-width : 800px)
+          background: none
+          padding: 0
+          width: 100%
+  &#slide-03
+    background: url(../../content/03.png) center center no-repeat $orange
+    .text
+      +spacing_regular
+      top: 100px
+      @media only screen and (min-width : 1320px)
+        +vertical-align
+      @media only screen and (max-width : 1024px)
+        top: 20%
+      @media only screen and (max-width : 800px)
+        +position-reset
+      h3
+        +circular_black
+        font-size: 4em
+        line-height: 1.2em
+        @media only screen and (max-width : 800px)
+          font-size: 2em
+      p
+        width: 60%
+        margin-bottom: 30px
+        color: white
+        @media only screen and (max-width : 800px)
+          width: 100%
+          margin: 30px auto
+  &#slide-04
+    background: url(../../content/04_b.png) 45% center no-repeat $green
+    @media only screen and (max-width : 1024px)
+      background-position: 38% center
+    h3
+      +black_title
+    .image
+      position: absolute
+      top: 150px
+      width: 30%
+      left: 10%
+      @media only screen and (min-width : 1320px)
+        +vertical-align
+      @media only screen and (max-width : 1024px)
+        left: 5%
+      @media only screen and (max-width : 800px)
+        +position-reset
+        margin: 30px auto
+      img
+        width: 100%
+        height: auto
+    .text
+      position: absolute
+      top: 150px
+      width: 40%
+      right: 10%
+      @media only screen and (max-width : 1024px)
+        width: 50%
+        right: 5%
+      @media only screen and (max-width : 800px)
+        +position-reset
+      p
+        width: 100%
+        color: white
+        margin-bottom: 15px
+  &#slide-05
+    background-color: #fff
+    -webkit-overflow-scrolling: touch
+    overflow: scroll
+    @media only screen and (max-width : 800px)
+      display: none
+    .gallery
+      figure
+        width: 100%
+        figcaption
+          +circular_regular
+          padding: 20px
+          font-size: 1.4em
+        img
+          width: 100%
+  &#slide-06
+    background-color: $red
+    img
+      display: block
+      margin-bottom: 30px
+    h3
+      +black_title
+    h4
+      font-size: 2em
+      text-transform: uppercase
+      font-style: italic
+      margin-bottom: 30px
+      color: white
+      font-weight: 900
+    ul
+      color: white
+      font-size: 1.6em
+      margin-bottom: 30px
+      line-height: 1.4em
+    .one
+      position: absolute
+      top: 30%
+      width: 30%
+      left: 10%
+      background: url(../../content/06_a.png) left top no-repeat
+      background-size: 70% auto
+      padding-top: 200px
+      @media only screen and (min-width : 1320px)
+        padding-top: 250px
+      @media only screen and (max-width : 800px)
+        +position-reset
+        background-position: center top
+        margin-top: 30px
+        padding-top: 200px
+    .two
+      position: absolute
+      top: 30%
+      width: 45%
+      right: 10%
+      background: url(../../content/06_b.png) left top no-repeat
+      background-size: 100% auto
+      padding-top: 200px
+      @media only screen and (min-width : 1320px)
+        padding-top: 250px
+      @media only screen and (max-width : 800px)
+        +position-reset
+        background-position: center top
+        margin-top: 30px
+        padding-top: 150px
+  &#slide-07
+    background: $yellow
+    h3
+      +black_title
+    ol
+      display: none
+    .image
+      +spacing_regular
+      top: 150px
+      text-align: center
+      @media only screen and (min-width : 1320px)
+        +vertical-align
+      img
+        margin: auto
+        width: 100%
+        max-width: 1024px
+  &#slide-08
+    background: url(../../content/08.png) 90% 90% no-repeat $purple
+    h3
+      +black_title
+    .text
+      +spacing_regular
+      top: 150px
+      color: white
+      @media only screen and (max-width : 800px)
+        +position-reset
+      ul
+        display: block
+        margin-bottom: 30px
+        @media only screen and (max-width : 800px)
+          margin: 30px auto
+        li
+          font-size: 2em
+          line-height: 1.4em
+          @media only screen and (max-width : 800px)
+            font-size: 1.4em
+      p
+        width: 70%
+        @media only screen and (max-width : 800px)
+          width: 100%
+        a
+          color: black
+  &#slide-09
+    background: url(../../content/09.png) 40% 35% no-repeat $fucsia
+    @media only screen and (max-width : 1024px)
+      background-size: 50%
+    h3
+      +black_title
+    .text
+      +spacing_regular
+      bottom: 20%
+      text-align: center
+      @media only screen and (max-width : 1024px)
+        bottom: 10%
+      @media only screen and (max-width : 800px)
+        +position-reset
+        margin: 60px auto auto auto
+      p
+        color: white
+        font-size: 1.8em
+        margin-bottom: 20px
+        a
+          color: white
+        span
+          display: block
+          margin-top: 20px
+          font-size: 2em
+          @media only screen and (max-width : 800px)
+            font-size: 1em
+  &#slide-10
+    background: white
+    -webkit-overflow-scrolling: touch
+    overflow: scroll
+    @media only screen and (max-width : 800px)
+      overflow: auto
+    h3
+      +black_title
+    .storify
+      +spacing_regular
+      top: 150px
+      bottom: 10%
+      @media only screen and (max-width : 800px)
+        +position-reset
+      iframe
+        width: 100% !important

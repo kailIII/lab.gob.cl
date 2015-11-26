@@ -1,0 +1,304 @@
+// the shape of things to come
+
+@import "compass/reset"
+@import "compass/css3"
+
+// --------------------------------------------------------------------------
+// Mixins
+// --------------------------------------------------------------------------
+
+@mixin border-box
+  -webkit-box-sizing : border-box
+  -ms-box-sizing : border-box
+  box-sizing : border-box
+
+=hide-text
+  display : inline-block
+  overflow : hidden
+  text-indent : -1000em
+
+=transform($value)
+  -webkit-transform: ($value)
+  -ms-transform: ($value)
+  transform: ($value)
+
+=columnizer
+  vertical-align: top
+  position: relative
+  display: inline-block
+  margin-right : -3.4px
+  padding: 15px
+
+=reset
+  +border-box
+  margin: 0
+  padding: 0
+  border: 0
+
+=hide
+  display : none
+  visibility: none
+
+=vertical-align
+  position: relative
+  top: 50%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+=ratio
+  position: relative
+  width: 100%
+  display: block
+  &.fourByThree
+    padding-bottom: 75%
+  &.sixteenByNine
+    padding-bottom: 56.25%
+  iframe
+    @extend %reset
+    display: block
+    width: 100%!important
+    height: 100%!important
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
+
+@font-face
+  font-family: 'gobCL'
+  font-weight: 100
+  font-style: normal
+  src: url('../fonts/gobCL-Light.eot?') format('eot'), url('../fonts/gobCL-Light.otf') format('opentype'), url('../fonts/gobCL-Light.woff') format('woff'), url('../fonts/gobCL-Light.ttf') format('truetype'), url('../fonts/gobCL-Light.svg#gobCL-Light') format('svg')
+@font-face
+  font-family: 'gobCL'
+  font-weight: 400
+  font-style: normal
+  src: url('../fonts/gobCL.eot?') format('eot'), url('../fonts/gobCL.otf') format('opentype'), url('../fonts/gobCL.woff') format('woff'), url('../fonts/gobCL.ttf') format('truetype'), url('../fonts/gobCL.svg#gobCL') format('svg')
+@font-face
+  font-family: 'gobCL'
+  font-weight: 600
+  font-style: normal
+  src: url('../fonts/gobCL-Bold.eot?') format('eot'), url('../fonts/gobCL-Bold.otf') format('opentype'), url('../fonts/gobCL-Bold.woff') format('woff'), url('../fonts/gobCL-Bold.ttf') format('truetype'), url('../fonts/gobCL-Bold.svg#gobCL-Bold') format('svg')
+@font-face
+  font-family: 'gobCL'
+  font-weight: 900
+  font-style: normal
+  src: url('../fonts/gobCL-Heavy.eot?') format('eot'), url('../fonts/gobCL-Heavy.otf') format('opentype'), url('../fonts/gobCL-Heavy.woff') format('woff'), url('../fonts/gobCL-Heavy.ttf') format('truetype'), url('../fonts/gobCL-Heavy.svg#gobCL-Heavy') format('svg')
+.gobcl
+  font-family: 'gobCL', Helvetica, Arial, sans-serif
+
+
+
+// ----------------------------------------------------------------------------
+// Basic classes
+// ----------------------------------------------------------------------------
+
+body
+  // font-family : Helvetica, Arial, sans-serif
+  @extend .gobcl
+  font-size : 76%
+  text-rendering : optimizelegibility
+  -webkit-font-smoothing : antialiased
+  font-smoothing : antialiased
+iframe
+  border : none
+a img
+  display : block
+
+// ----------------------------------------------------------------------------
+// Structure
+// ----------------------------------------------------------------------------
+
+.full
+  +border-box
+  position : relative
+  display: block
+  width: 100%
+.centered
+  +border-box
+  margin : auto
+  position : relative
+  max-width : 980px
+  text-align : left
+  @media only screen and (max-width : 1024px)
+    width: 100%
+    padding-left: 15px!important
+    padding-right: 15px!important
+.col1
+  +border-box
+  width : 100%
+  position: relative
+  background: red
+  display: block
+.col2
+  +border-box
+  +columnizer
+  width : 50%
+  background: blue
+  @media only screen and (max-width : 800px)
+    width: 100%
+.col3
+  +border-box
+  +columnizer
+  width: 30%
+  &:nth-of-type(1)
+    margin-right: 1%
+  &:nth-of-type(2)
+    margin-right: .5%
+    margin-left: .5%
+  &:nth-of-type(3)
+    margin-left: 1%
+  @media only screen and (max-width : 600px)
+    width: 100%
+    margin: 0
+.col4
+  +border-box
+  +columnizer
+  width : 25%
+  background: green
+
+// ----------------------------------------------------------------------------
+// Colours and Buttons
+// ----------------------------------------------------------------------------
+
+$orange : #fa650d
+$red: #ff3300
+$blue: #6a9de4
+
+body
+  background: white
+a
+  color: $orange
+  text-decoration : none
+  position : relative
+  &:hover
+    text-decoration : none
+
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
+
+p,h1,h2,h3,h4,h5,big,blockquote,.title,strong,em
+  @extend %reset
+h1
+  font-weight: 100
+  font-size: 7em
+  @media only screen and (max-width : 1024px)
+    font-size: 5em
+  @media only screen and (max-width : 640px)
+    font-size: 3em
+h2
+  font-weight: 100
+h3
+  font-weight: 100
+  font-size: 2em
+h4
+  font-weight: 900
+  font-size: 2em
+h5
+  font-weight: 100
+p,li
+  font-weight: 400
+  font-size: 2em
+  line-height: 1.4em
+  margin-bottom: 20px
+  @media only screen and (max-width : 640px)
+    font-size: 1.6em
+strong
+  font-weight: 900
+
+
+
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
+
+header
+  +border-box
+  width: 100%
+  padding: 0 0 40px 0
+  background: white
+  border-bottom: 1px solid #eee
+  h1
+    a
+      +hide-text
+      width: 180px
+      height: 60px
+      background: url(../img/logo.png) center top no-repeat
+      background-size: 100%
+  h2
+    a
+      +hide-text
+      width: 180px
+      height: 18px
+      background: url(../img/gob_oficial.png) center top no-repeat
+      background-size: 100%
+      margin: 0 0 10px 0
+footer
+  padding: 40px 0
+  text-align: center
+  h3
+    text-align: center
+    margin: 40px auto 10px auto
+  ul
+    margin: 20px auto
+    li
+      display: inline-block
+      vertical-align: middle
+      margin: 20px 10px
+section.intro
+  background: url(../img/back.jpg) center top no-repeat fixed
+  background-size: cover
+  border-bottom: 1px solid #eee
+  .centered
+    padding-top: 40px
+    padding-bottom: 40px
+    @media only screen and (max-width : 640px)
+      padding-top: 15px
+      padding-bottom: 15px
+  h1
+    margin: 40px auto
+    @media only screen and (max-width : 640px)
+      margin: 20px auto
+  p
+    margin: 5px auto
+
+
+#mce-EMAIL
+  +border-box
+  @extend .gobcl
+  display: inline-block
+  width: 500px
+  padding: 20px
+  border: 0
+  background: #eee
+  color: black
+  font-size: 2em
+  @media only screen and (max-width : 860px)
+    width: 60%
+  @media only screen and (max-width : 380px)
+    width: 100%
+#mc-embedded-subscribe
+  @extend .gobcl
+  display: inline-block
+  width: 300px
+  padding: 20px
+  border: 0
+  background: white
+  color: black
+  font-size: 2em
+  cursor: pointer
+  &:hover
+    background: black
+    color: white
+  @media only screen and (max-width : 860px)
+    width: 35%
+  @media only screen and (max-width : 380px)
+    width: 100%
+    background: #999
+    color: white

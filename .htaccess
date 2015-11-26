@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^GIP/?$ gip/ [R=301,L]
+RewriteRule ^aulab/?$ http://www.elaulab.com/ [R=302,L]
+RewriteRule ^envivo/?$ https://livestream.com/accounts/14009372/gip2015 [R=302,L]
+RewriteRule ^impacta/envivo/?$ https://livestream.com/accounts/14009372/events/4228324 [R=302,L]

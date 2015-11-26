@@ -1,0 +1,864 @@
+// the shape of things to come
+
+@import "compass/reset"
+@import "compass/css3"
+
+// --------------------------------------------------------------------------
+// Utilities
+// --------------------------------------------------------------------------
+
+=hide-text
+  display : inline-block
+  overflow : hidden
+  text-indent : -1000em
+
+=columnizer
+  @include box-sizing(border-box)
+  vertical-align: top
+  position: relative
+  display: inline-block
+  margin-right : -3.4px
+
+=reset
+  @include box-sizing(border-box)
+  margin: 0
+  padding: 0
+  border: 0
+
+=hide
+  display : none
+  visibility: none
+
+=vertical-align
+  position: relative
+  top: 50%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+.player
+  position: relative
+  width: 100%
+  display: block
+  padding-bottom: 56.25%
+  iframe
+    +reset
+    display: block
+    width: 100%!important
+    height: 100%!important
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
+
+@font-face
+  font-family: 'BrownBold'
+  font-weight: 900
+  font-style: normal
+  src: url('../fonts/2F67C3_0_0.eot')
+  src: url('../fonts/2F67C3_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2F67C3_0_0.woff2') format('woff2'),url('../fonts/2F67C3_0_0.woff') format('woff'),url('../fonts/2F67C3_0_0.ttf') format('truetype')
+@font-face
+  font-family: 'BrownItalic'
+  font-weight: 300
+  font-style: italic
+  src: url('../fonts/2F67C3_1_0.eot')
+  src: url('../fonts/2F67C3_1_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2F67C3_1_0.woff2') format('woff2'),url('../fonts/2F67C3_1_0.woff') format('woff'),url('../fonts/2F67C3_1_0.ttf') format('truetype')
+@font-face
+  font-weight: 100
+  font-style: normal
+  font-family: 'BrownLight'
+  src: url('../fonts/2F67C3_2_0.eot')
+  src: url('../fonts/2F67C3_2_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2F67C3_2_0.woff2') format('woff2'),url('../fonts/2F67C3_2_0.woff') format('woff'),url('../fonts/2F67C3_2_0.ttf') format('truetype')
+@font-face
+  font-family: 'Brown'
+  font-weight: 300
+  font-style: normal
+  src: url('../fonts/2F67C3_3_0.eot')
+  src: url('../fonts/2F67C3_3_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2F67C3_3_0.woff2') format('woff2'),url('../fonts/2F67C3_3_0.woff') format('woff'),url('../fonts/2F67C3_3_0.ttf') format('truetype')
+
+
+=brown
+  font-family: 'Brown', Helvetica, Arial, sans-serif
+
+
+
+// ----------------------------------------------------------------------------
+// Basic classes
+// ----------------------------------------------------------------------------
+
+body
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size : 76%
+  text-rendering : optimizelegibility
+  -webkit-font-smoothing : antialiased
+  font-smoothing : antialiased
+iframe
+  border : none
+a img, figure img
+  display : block
+  height: auto
+
+// ----------------------------------------------------------------------------
+// Structure
+// ----------------------------------------------------------------------------
+
+=full
+  @include box-sizing(border-box)
+  position : relative
+  display: block
+  width: 100%
+=centered
+  @include box-sizing(border-box)
+  margin : auto
+  position : relative
+  max-width : 1000px
+  text-align : left
+  @media only screen and (max-width : 1050px)
+    margin: 15px
+=col1
+  @include box-sizing(border-box)
+  width : 100%
+  position: relative
+  display: block
+=col2
+  +columnizer
+  width : 50%
+  @media only screen and (max-width : 900px)
+    width: 100%
+=col3
+  +columnizer
+  width: 32%
+  &:nth-of-type(1)
+    margin-right: 1%
+  &:nth-of-type(2)
+    margin-right: .5%
+    margin-left: .5%
+  &:nth-of-type(3)
+    margin-left: 1%
+  @media only screen and (max-width : 900px)
+    width: 100%
+    margin-left: 0!important
+    margin-right: 0!important
+=col4
+  +columnizer
+  width : 25%
+  @media only screen and (max-width : 900px)
+    width: 50%
+  @media only screen and (max-width : 640px)
+    width: 100%
+=col40
+  +columnizer
+  width : 40%
+  @media only screen and (max-width : 900px)
+    width: 50%
+  @media only screen and (max-width : 640px)
+    width: 100%
+=col60
+  +columnizer
+  width : 60%
+  @media only screen and (max-width : 900px)
+    width: 50%
+  @media only screen and (max-width : 640px)
+    width: 100%
+
+=col30
+  +columnizer
+  width : 30%
+=col70
+  +columnizer
+  width : 70%
+
+
+=border_top
+  display: block
+  clear: both
+  border-top: 10px solid black
+  padding-top: 30px
+  margin-top: 30px
+
+=border_big
+  border: 20px solid black
+  @media only screen and (max-width : 1050px)
+    border: 10px solid black
+  @media only screen and (max-width : 750px)
+    border: 5px solid black
+
+=border_mid
+  border: 10px solid black
+  @media only screen and (max-width : 750px)
+    border: 5px solid black
+  @media only screen and (max-width : 480px)
+    border: 5px solid black
+    border-left: 0
+    border-right: 0
+
+// ----------------------------------------------------------------------------
+// Colours and Buttons
+// ----------------------------------------------------------------------------
+
+$red: #e42e36
+$blue: #6a9de4
+$pink: #E82C8F
+$green: #41D278
+
+a
+  text-decoration : none
+  color: #333
+  position : relative
+  &:hover
+    color: $red
+    text-decoration : underline
+
+.btn
+  display: inline-block
+  text-decoration: none
+  +brown
+  &.gob
+    +hide-text
+    background: image-url('gob_oficial.png') center center
+    width: 128px
+    height: 18px
+  &.big
+    padding: 10px 15px 15px 15px
+    font-size: 1.4em
+    line-height: 1em
+  &.arrow
+    +hide-text
+    width: 35px
+    height: 24px
+    background: image-url('sprite_arrows.png') left top no-repeat
+    background-size: auto 24px
+    &:hover
+      background-position: -69px top
+      text-decoration: none
+  &.more
+    padding: 20px 40px
+    font-size: 1.8em
+    color: white
+    background-color: black
+  &.black
+    color: white
+    background-color: black
+    &:after
+      content: ''
+      +hide-text
+      width: 32px
+      height: 22px
+      background: image-url('sprite_arrows.png') right top no-repeat
+      background-size: auto 22px
+      position: relative
+      top: 5px
+      margin-left: 10px
+    &:hover
+      background-color: $red
+      text-decoration: none
+
+=hover-icon
+  position: relative
+  top: 0
+  display: block
+  -moz-transition: all 0.1s ease-in-out
+  transition: all 0.1s ease-in-out
+  &:hover
+    filter: alpha(opacity=50)
+    -webkit-opacity: 0.5
+    opacity: 0.5
+    top: -5px
+
+=social
+  li
+    display: inline-block
+    vertical-align: middle
+    margin: 0 0 0 20px
+    a
+      +hide-text
+      +hover-icon
+      background: image-url('sprite_social.png') no-repeat
+      background-size: 18px auto
+      width: 20px
+      height: 20px
+      &.vimeo
+        background-position: center 2px
+      &.twitter
+        background-position: center -58px
+      &.facebook
+        background-position: center -115px
+      &.linkedin
+        background-position: center -164px
+
+// ----------------------------------------------------------------------------
+// General Typography
+// ----------------------------------------------------------------------------
+
+p,h1,h2,h3,h4,h5,big,blockquote,.title,strong,em
+  +reset
+h1,h2,h3,h4,h5,big.title,blockquote
+  +brown
+
+=font_size_regular
+  font-size: 1.4em
+  line-height: 1.4em
+=font_size_small
+  font-size: 1.2em
+  line-height: 1.4em
+
+article
+  h1
+    font-size: 2.4em
+  h2
+    font-size: 2.2em
+  h3
+    font-size: 1.8em
+    line-height: 1.4em
+  h4
+    font-size: 1.6em
+  strong
+    font-weight: 900
+  h5, p, li
+    +font_size_regular
+  figcaption, small
+    +font_size_small
+  ul, ol
+    padding: 0 0 0 40px
+    li
+      line-height: 1.6em
+  ul
+    list-style: circle
+  ol
+    list-style: decimal
+
+// ----------------------------------------------------------------------------
+// Header
+// ----------------------------------------------------------------------------
+
+.up
+  @include box-sizing(border-box)
+  position: absolute
+  bottom: 0
+  right: 0
+  background: black
+  color: white
+  text-align: center
+  padding: 8px
+  width: 30px
+  height: 30px
+  font-size: 1.6em
+
+header.global
+  +centered
+  height: 90px
+  margin: 40px auto
+  z-index: 100
+  clear: both
+  h1
+    display: block
+    float: left
+    a
+      +hide-text
+      width: 250px
+      height: 75px
+      background: image-url('logo.png') left top no-repeat
+  ul.main
+    position: absolute
+    right: 0
+    top: 50px
+    +brown
+    @media only screen and (max-width : 750px)
+      display: none
+    > li
+      position: relative
+      display: inline-block
+      margin-left: 30px
+      font-size: 1.6em
+      a:hover
+        color: red
+        text-decoration: none
+      ul.sub-menu
+        @include box-sizing(border-box)
+        position: absolute
+        z-index: 110
+        display: none
+        top: 60px
+        min-width: 300px
+        li
+          margin-bottom: 10px
+          a
+            color: white
+            &:hover
+              color: red
+              text-decoration: none
+      &.sel
+        ul.sub-menu
+          display: block
+        &:after
+          content: ''
+          position: absolute
+          top: 15px
+          left: -3000px
+          right: -3000px
+          height: 90px
+          background: black
+          padding: 30px 0
+          border-top: 20px solid white
+
+// ----------------------------------------------------------------------------
+// Specific Content & Reusable Sections
+// ----------------------------------------------------------------------------
+
+#container
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  overflow-y: scroll
+  +border_big
+  @media only screen and (max-width : 480px)
+    position: inherit
+    border: 0
+
+=item_header
+  header,h3,img
+    display: block
+    margin-bottom: 15px
+  header
+    border-bottom: 1px solid black
+    padding-bottom: 10px
+    strong
+      font-size: 1.2em
+    span
+      float: right
+      text-transform: uppercase
+      font-size: 1.2em
+
+.big_title
+  +centered
+  +border_mid
+  margin-bottom: 40px
+  padding: 20px
+  text-align: center
+  h2
+    font-size: 3.2em
+    line-height: 1em
+    text-align: center
+    @media only screen and (max-width : 750px)
+      font-size: 2.8em
+    @media only screen and (max-width : 480px)
+      font-size: 2.2em
+
+section.blog
+  h5
+    display: block
+  &:after
+    content: ''
+    display: block
+    clear: both
+  .columnSize, .item
+    width: 32%
+    @include box-sizing(border-box)
+  .item
+    +border_mid
+    +item_header
+    float: left
+    padding: 15px
+    margin-bottom: 15px
+    overflow: hidden
+    &.featured
+      width: 66%
+      border-color: $pink
+    &:hover
+      background-color: black
+      border-color: black
+      header,span,h3,a,p,strong
+        color: white
+      a:hover
+        text-decoration: none
+        background-color: black
+        color: white
+      a.arrow
+        background-position: right top
+    img
+      width: 100%
+
+.main_gallery
+  display: block
+  +border_mid
+  div
+    background: black
+    figure
+      +reset
+      +hide
+      position: relative
+      &.sel
+        display: block
+      figcaption
+        +border_mid
+        +item_header
+        position: absolute
+        bottom: 30px
+        right: 30px
+        width: 30%
+        padding: 20px
+        background: white
+      img
+        display: block
+        width: 100%
+        height: auto
+
+.simple_article
+  h3, strong
+    display: block
+    margin-bottom: 10px
+
+=content
+  h1,h2,h3,h4,h5
+    display: block
+    margin-top: 30px
+    margin-bottom: 10px
+  p,blockquote,ul,ol,figure, .player
+    display: block
+    margin-bottom: 30px
+  ul,ol
+    margin: 20px 0 30px 35px
+    +font_size_regular
+  ul
+    list-style: disc
+  ol
+    list-style: decimal
+  figure
+    display: block
+    margin-bottom: 30px
+    img
+      width: 100%
+  iframe
+    display: block
+    width: 100%
+
+figure
+  img
+    background: #f5f5f5
+  figcaption
+    display: block
+    margin-top: 10px
+    color: $green
+
+// ----------------------------------------------------------------------------
+// General Content & Main Templates
+// ----------------------------------------------------------------------------
+
+.home
+  .featured, .intersitial, .calls, .blog
+    +centered
+    margin-bottom: 30px
+  .intersitial
+    article
+      +col3
+      @extend .simple_article
+  .blog
+    padding-top: 30px
+    h5
+      position: absolute
+      top: 0px
+
+
+.page, .single
+  section
+    +centered
+    margin-bottom: 30px
+    .the-post
+      p, h1, h2, h3, h4, h5, ul, ol, blockquote
+        margin-bottom: 50px
+      p:last-of-type
+        margin: 0
+      ul.gallery
+        margin: 0 0 30px 0
+        padding: 0
+        font-size: 1em!important
+        figure
+          position: relative
+          figcaption
+            position: absolute
+            bottom: 40px
+            right: 40px
+            width: 300px
+            padding: 20px
+            background: white
+            border: 4px solid black
+            color: black
+            font-size: 1em
+          img
+            display: block
+            width: 100%
+            height: auto
+
+.page
+  .load
+    text-align: center
+  .filter
+    ul
+      li
+        display: inline-block
+        margin-right: 15px
+        a
+          text-transform: uppercase
+
+
+.single-post
+  .single-header,.single-post,.single-related
+    +centered
+  .single-post
+    margin-bottom: 30px
+    aside
+      +col30
+      .box
+        @include box-sizing(border-box)
+        +border_mid
+        display: block
+        width: 80%
+        padding: 20px
+        margin-bottom: 10px
+        h5
+          margin: 20px 0 0 0
+          +brown
+    article
+      +col70
+      +content
+      header
+        display: block
+        padding-bottom: 30px
+        strong
+          display: block
+          margin-bottom: 15px
+          +font_size_regular
+        h1
+          +reset
+  .single-related
+    h5
+      display: block
+      padding: 20px 0
+    article
+      +col3
+      +border_mid
+      +item_header
+      padding: 20px
+      figure
+        display: block
+        margin-bottom: 15px
+        img
+          display: block
+          width: 100%
+
+// ----------------------------------------------------------------------------
+// Footers
+// ----------------------------------------------------------------------------
+
+footer.links,
+footer.gob
+  +centered
+  +border_top
+footer.gob
+  h5
+    display: block
+    margin-bottom: 15px
+  ul
+    li
+      +col3
+      background: #f5f5f5
+      @include single-box-shadow(0,0,1px,1px,#ccc)
+footer.links
+  min-height: 80px
+  .btn, .social
+    display: block
+    position: absolute
+    top: 20px
+  .btn
+    left: 0
+  .social
+    right: 0
+    +social
+
+
+// ----------------------------------------------------------------------------
+// Page Content
+// ----------------------------------------------------------------------------
+
+=title_tail
+  .big_title:after
+    content: ''
+    width: 10px
+    height: 40px
+    background: black
+    position: absolute
+    bottom: -40px
+    left: 50%
+
+body.que-hacemos
+  +title_tail
+  .the-post
+    padding: 30px
+    background: black
+    color: white
+  .intersitial
+    margin: 30px 0 0 0
+    article
+      +col3
+      @extend .simple_article
+
+body.que-pensamos
+  +title_tail
+  .the-post
+    .bottom
+      padding: 30px 0
+      text-align: center
+      clear: both
+      width: 100%
+      img
+        text-align: center
+        display: block
+        margin: 0 auto 30px auto
+      strong
+        +brown
+        display: block
+        padding: 30px
+        +border_mid
+        width: 100%
+        clear: both
+        font-size: 2em
+    p
+      padding: 30px
+      +border_mid
+      width: 70%
+      display: block
+      margin: -10px 0 0 0
+      &:nth-of-type(1n)
+        float: left
+      &:nth-of-type(2n)
+        float: right
+      &:last-of-type
+        margin: -10px 0 30px 0
+      &:nth-of-type(1n)
+        strong
+          color: #EB4646 // Red
+      &:nth-of-type(2n)
+        strong
+          color: #41D278 // Green
+      &:nth-of-type(3n)
+        strong
+          color: #00E1EE // Cyan
+      &:nth-of-type(4n)
+        strong
+          color: #E82C8F // Magenta
+      &:nth-of-type(5n)
+        strong
+          color: #0081C4 // Blue
+
+
+.slick-slider
+  position: relative
+  display: block
+  @include box-sizing(border-box)
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  user-select: none
+  -ms-touch-action: pan-y
+  touch-action: pan-y
+  -webkit-tap-highlight-color: transparent
+  .slick-list
+    position: relative
+    overflow: hidden
+    display: block
+    margin: 0
+    padding: 0
+    &:focus
+      outline: none
+    &.dragging
+      cursor: pointer
+  .slick-track, .slick-list
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  .slick-track
+    position: relative
+    left: 0
+    top: 0
+    display: block
+    &:before, &:after
+      content: ""
+      display: table
+    &:after
+      clear: both
+    .slick-loading &
+      visibility: hidden
+.slick-slide
+  float: left
+  height: 100%
+  min-height: 1px
+  figure
+    margin-bottom: 0
+  img
+    display: block
+  &.slick-loading img
+    display: none
+  &.dragging img
+    pointer-events: none
+  .slick-initialized &
+    display: block
+  .slick-loading &
+    visibility: hidden
+  .slick-vertical &
+    display: block
+    height: auto
+    border: 1px solid transparent
+.slick-arrow.slick-hidden
+  display: none
+
+.slick-dots
+  list-style: none
+  position: absolute
+  bottom: 20px
+  left: 20px
+  li
+    display: inline-block
+    button
+      padding: 0
+      margin: 5px
+      outline: none
+      background: white
+      width: 15px
+      height: 15px
+      border: 0
+      +hide-text
+      &:hover
+        background: $pink
+    &.slick-active
+      button
+        background: $pink
+
+
+
+.slick-prev,
+.slick-next
+  position: absolute
+  display: block
+  height: 20px
+  cursor: pointer
+  top: 50%
+  padding: 0
+  border: none
+  outline: none
+  background: transparent
+  +brown
+.slick-prev
+  left: -70px
+  @include transform(rotate(90deg))
+.slick-next
+  right: -70px
+  @include transform(rotate(-90deg))
+
+
+.filter
+  display: none
